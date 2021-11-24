@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no, address=no, email=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>tab menu</title>
+</head>
+
+<body>
+  <div class="inner">
+    <!-- Tab -->
+    <div class="tab-box">
+      <ul class="tab-menu">
+        <!-- 버튼 클릭 시 li 태그에 class="on"추가 -->
+        <li class="on"><button type="button" data-tab="tab1">tab01</button></li>
+        <li><button type="button" data-tab="tab2">tab02</button></li>
+        <li><button type="button" data-tab="tab3">tab03</button></li>
+        <li><button type="button" data-tab="tab4">tab04</button></li>
+      </ul>
+    </div>
+    <!-- content -->
+    <!-- tab01 -->
+    <div class="tab-cont-wrap">
+      <div class="tab-cont" id="tab1">
+        <p>tab01</p>
+      </div>
+      <!-- tab02 -->
+      <div class="tab-cont" id="tab2">
+        <p>tab02</p>
+      </div>
+      <!-- tab03 -->
+      <div class="tab-cont" id="tab3">
+        <p>tab03</p>
+      </div>
+      <!-- tab04 -->
+      <div class="tab-cont" id="tab4" style="">
+        <p>tab04</p>
+      </div>
+    </div>
+  </div>
+  <script src="../js/libs/jquery-3.5.1.min.js"></script>
+  <script src="../js/ui.js"></script>
+</body>
+
+</html>
