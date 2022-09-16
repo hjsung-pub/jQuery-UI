@@ -34,7 +34,6 @@ button.btn-s{flex:none;width:40%;}
 
 /*클래스를 사용하여 애니메이션 주는 경우 - 주석풀기*/
 .popup-wrap.show{display:block !important;}
-
 .popup-box .popup-btm{display:table-cell;width:100%;height:auto;vertical-align:bottom;}
 .show .popup-mid .popup{-webkit-animation-name: zoomIn;
 animation-name: zoomIn;}
@@ -44,7 +43,6 @@ animation-name: fadeInUp;}
 animation-duration: 0.3s;-webkit-animation-fill-mode: both;animation-fill-mode: both;}
 .close .popup-mid .popup{-webkit-animation-name: zoomOut;animation-name: zoomOut;} 
 .close .popup-btm .popup{-webkit-animation-name: slideOutDown;animation-name: slideOutDown;} 
-
 
 /* popup animation*/
 @-webkit-keyframes zoomIn {
@@ -268,7 +266,21 @@ animation-name: fadeInUp;
 .tab-cont{background-color:#f1f1f1;display:none;}
 .tab-cont.animate{animation: fadeInUp .5s ease-in-out both;display: block;}
 
+/*===== Tab Swiper Menu =====*/
+.tab-swiper-menu{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-orient: horizontal;-webkit-box-direction: normal;-ms-flex-direction: row;flex-direction: row;}
+.tab-swiper-menu > li{-webkit-box-flex: 1;-ms-flex: 1;flex: 1;width: 100%;}
+.tab-swiper-menu > li button{width: 100%;height: 5rem;color: #999;border-bottom: 2px solid #eee}
+.tab-swiper-menu > li.on button{color: #000;border-color: #ff1847;}
+.tab-swiper-cont .swiper-slide{height: 10rem;background-color: #fafafa}
 
+/*===== Center Menu =====*/
+.pd30{padding: 3rem;}
+.center-menu-wrap{position: relative; width: 100%;max-width: 40rem;height: 5.5rem;border: 1px solid #e1e1e1;border-radius: 3rem;overflow: hidden;}
+.center-menu{display: flex;flex-direction: row;height: inherit;align-items: center;padding: 0 1rem;overflow-x: auto;/* gap: 1.5rem;*/}
+.center-menu > li{border-radius: 2rem;background-color: #e1e1e1;overflow: hidden;flex: 1 0 auto;margin: 0 .75rem;}
+.center-menu > li.on{background-color: rgb(104, 158, 250);}
+.center-menu > li > button{display: inline-block;color: #333;background-color: inherit;padding: .5rem 1.2rem;font-size: 1.6rem;}
+.center-menu > li.on > button{color: #fff;}
 
 /*===== Rolling Notice =====*/
 .line-box{width:100%;border:1px solid #ddd;background-color:#fff;padding:1.3rem 2rem;}
@@ -285,7 +297,6 @@ animation-name: fadeInUp;
 .line-box.main-notic-box .notic-list a{font-size:1.6rem;line-height:3.6rem;}
 
 /*===== Rolling Notice02 =====*/
-
 .rolling-wrap{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;margin:0 auto;width:100%;height:6rem;line-height:6rem;overflow:hidden;padding:0 3.2rem;border-radius:3rem;background-color:#333;}
 .rolling-wrap *{font-size:1.6rem;color:#fff;}
 .rolling-box-wrap{-webkit-box-flex:1;-ms-flex:1;flex:1;width:100%;overflow: hidden;margin-left:7.8rem;margin-right:2.6rem;}
@@ -295,3 +306,6 @@ animation-name: fadeInUp;
 .rolling-box a:focus{border:1px solid red;}
 .rolling-box a .txt{width:100%;font-weight:bold;-webkit-box-flex:1;-ms-flex:1;flex:1;padding-right:2rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:break-word;}
 .btn-plus{position:relative;top:50%;margin-top:-10px;width:20px;height:20px;text-indent:-9999rem;background:url('../img/btn-plus-white.png') no-repeat;background-size:100% 100%;}
+
+.test{position: relative;}
+.test li{height: 15rem;}

@@ -15,6 +15,10 @@ $(window).ready(function(event){
 	//tab
 	tabMenu();
 
+	//메뉴 버튼 클릭 시 해당 메뉴 가운데 정렬
+	// menuCenter();
+	menuCenter2();
+
 	//Rolling Notice
 	rollingNotice();
 
@@ -82,7 +86,7 @@ $('.popup-wrap').on("touchstart mouseup", function (e){
 		popBgClose.parents().find(".popup-wrap").removeAttr("tabindex");
 	}
 
-	return false;
+	// return false;
 });
 
 //말줄임이 있는 경우
@@ -341,4 +345,77 @@ function rollingNotice02(){
 		noticeRollingOff = setInterval(noticeRolling,2000);
 	});
 }
+
+//내부 버튼 왼쪽 좌표 배열에 저장 후 스크롤 이동.
+//초기에 죄표값을 저장하지 않는 경우 스크롤 시 position().left 값이 계속 변경됨.
+function menuCenter(){
+	const menuWrap = $('.center-menu-wrap');
+	const scrollDom = $('.center-menu');
+	const leftArray = [];
+
+	$('.center-menu li').each(function(idx, obj){
+		leftArray.push($(this).position().left);
+	});
+
+	console.log(leftArray);
+
+	$('.center-menu-wrap button').on('click', function(){
+		const btnWidth = $(this).outerWidth();
+		const btnLeft = leftArray[$(this).parent().index()];
+		const center = menuWrap.outerWidth() - btnWidth;
+		const left = btnLeft - center/2;
+
+		scrollDom.animate({
+			scrollLeft: left
+		},300)
+
+		//버튼 on 클래스 추가
+		$(this).parents('.center-menu').find('li').removeClass('on');
+		$(this).parent().addClass('on');
+		console.log(btnLeft);
+	});
+}
+
+// 내부 버튼 크기(padding & margin 포함)를 합해 스크롤이동.
+function menuCenter2(){ 
+	const menuItem = $('.center-menu li button');
+	
+	menuItem.click(function(){
+		var target = $(this).parent();
+		menuItem.parent().removeClass('on');
+		target.addClass('on');
+		menuCenterCC(target);
+	});
+}
+
+function menuCenterCC(target){
+	const box = $('.center-menu');
+	const boxItem = box.find('li');
+	const boxHalf = box.width()/2;
+	let pos;
+	let listWidth = 0;
+	let targetLeft = 0;
+
+	boxItem.each(function(){
+		listWidth += $(this).outerWidth(true);
+	});
+
+	for(let i = 0; i < target.index(); i++){
+		targetLeft += boxItem.eq(i).outerWidth(true); //선택한 요소까지의 길이
+	}
+
+	const selectTargetPos = (targetLeft + target.outerWidth()/2);
+	if(selectTargetPos <= boxHalf){ //left 
+		pos = 0;
+	}else if(listWidth - selectTargetPos <= boxHalf){ //right >> target 절반 이후 영역이 boxHalf 보다 작을경우 정렬.
+		pos = listWidth - box.width();
+	}else{
+		pos = selectTargetPos - boxHalf; // 가운데 정렬
+	}
+
+	box.animate({
+		scrollLeft: pos
+	},300)
+}
+
 
