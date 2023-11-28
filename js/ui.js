@@ -1,9 +1,8 @@
 
 $(window).ready(function(event){
 	
-	//popup show
-	popupShow();
-	popupClose();
+	//popup
+	popupAnimation()
 	
 	//accordion
 	accordianList();
@@ -27,57 +26,48 @@ $(window).ready(function(event){
 
 });
 
-// 클래스를 사용하여 애니메이션 주는 경우 
-//function popupShow(){
-//	//popup oepn
-//	$('.btn-pop').on('click',function(){
-//		$('.popup-wrap').addClass('show');
-//	});
-//	//popup close
-//	$('.btn-pop-close').on('click',function(){
-//		$('.popup-wrap').addClass('close');
-//		$('.popup-wrap.close').find('.popup-btm').one('webkitAnimationEnd animationend',function(){
-//			$('.popup-wrap').removeClass('close');
-//			$('.popup-wrap').removeClass('show');
-//		
-//		});
-//	});
-//}
 
 var tagId; 
-// 제이쿼리를 사용하여 애니메이션 주는 경우
- function popupShow(){
- 	//popup oepn
-	 $('.btn-pop').on('click',function(){
-		 tagId = $(this).attr('id'); 
-		 console.log(tagId);
-		$('.popup-wrap').fadeIn().addClass('show').removeClass('close');
-		//팝업에 포커스
-		$('.popup-wrap').attr("tabindex", 0).show().focus();
- 	});
-	
-// 	if($('.popup-wrap').hasClass('show')){
-// 		$('.popup-wrap').fadeIn();
-// 	}else{
-// 		$('.popup-wrap').fadeOut();
-// 	}
- }
-
-function popupClose(){
+//레이어 팝업
+var popupAnimation = function(){
+	//popup oepn
+	$('button[data-popup]').on('click',function(){
+		const $target = $(this).data('popup');
+		const $id = $(this).attr('id');
+		tagId = $id
+        popupShow($target);
+	});
 	//popup close
-	$('.btn-pop-close').on('click',function(){
-		$(this).parents('.popup-wrap').fadeOut().addClass('close').removeClass('show');
-		//팝업 포커스 지우기
-		$(this).parents('.popup-wrap').removeAttr("tabindex");
-		//기존 버튼에 포커스주기
-		$('#'+tagId).focus();
+	$('.popup-close').on('click',function(e){
+	    popupClose(e.target);
 	});
 }
+
+var popupShow = function(id){
+    const popup =  $(`#${id}`);
+    // console.log(id);
+    if (!popup) return;
+   popup.fadeIn().addClass('show').removeClass('close');
+   $('body').addClass('over_-h');
+   	
+   	//팝업에 포커스
+  	popup.attr("tabindex", 0).show().focus();
+};
+
+var popupClose = function(closeButton){
+    $(closeButton).parents('.popup-wrap').fadeOut().addClass('close').removeClass('show');
+	$('body').removeClass('over_-h');
+	//팝업 포커스 지우기
+	$(closeButton).parents('.popup-wrap').removeAttr("tabindex");
+	//기존 버튼에 포커스주기
+	console.log(tagId)
+	$(`#${tagId}`).focus();
+};
 
 // popup bg click시 close
 $('.popup-wrap').on("touchstart mouseup", function (e){
 	console.log("Dddddd");
-	var popBgClose = $(".popup-btm .popup");
+	var popBgClose = $(".popup-box .popup");
 
 	// tooltip
 	if (!popBgClose.is(e.target) && popBgClose.has(e.target).length == 0) {
@@ -85,9 +75,9 @@ $('.popup-wrap').on("touchstart mouseup", function (e){
 		//팝업 포커스 지우기
 		popBgClose.parents().find(".popup-wrap").removeAttr("tabindex");
 	}
-
 	// return false;
 });
+
 
 //말줄임이 있는 경우
 function accordianList(){
