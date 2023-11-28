@@ -9,10 +9,11 @@
     <title>하단에서 올라오는 팝업</title>
 </head>
 <body>
-    <button type="button" class="btn-pop" id="btnPopOpen">팝업</button>
+    <input type="text"><br>
+    <button type="button" data-popup="popOpen" id="pop01">팝업 열기</button><br>
     <input type="text">
     <!-- Popup -->
-	<div class="popup-wrap"><!-- popup show : ui.js > popupShow() 참고 -->
+	<div class="popup-wrap" id="popOpen"><!-- popup show : ui.js > popupShow() 참고 -->
         <div class="popup-bg"></div>
         <div class="popup-box">
             <div class="popup-btm"><!-- 중간위치 : popup-mid, 하단위치 : popup-btm-->
@@ -20,7 +21,7 @@
                     <div class="pop-body">
                         <div class="pop-cont" style="height:50rem;">
                             내용이 들어갑니다.
-							<button type="button" class="btn-pop-close">닫기</button>
+							<button type="button" class="btn-pop-close popup-close">닫기</button>
                         </div>
                     </div>
                     <div class="btn-wrap">

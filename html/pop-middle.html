@@ -9,9 +9,9 @@
     <title>가운데에서 줌인되는 팝업</title>
 </head>
 <body>
-    <button type="button" class="btn-pop">팝업</button>
+    <button type="button" data-popup="popOpen">팝업 열기</button>
     <!-- Popup -->
-	<div class="popup-wrap"><!-- popup show : ui.js > popupShow() 참고 -->
+	<div class="popup-wrap" id="popOpen"><!-- popup show : ui.js > popupShow() 참고 -->
         <div class="popup-bg"></div>
         <div class="popup-box">
             <div class="popup-mid"><!-- 중간위치 : popup-mid, 하단위치 : popup-btm-->
@@ -19,7 +19,7 @@
                     <div class="pop-body">
                         <div class="pop-cont">
                             내용이 들어갑니다.
-                            <button type="button" class="btn-pop-close">닫기</button>
+                            <button type="button" class="btn-pop-close popup-close">닫기</button>
                         </div>
                     </div>
                     <div class="btn-wrap">
